@@ -54,10 +54,10 @@
    * TODO: Fill in your Application information here
    */
    var twit = new ntwitter({
-    consumer_key: 'EibJRBO1NGcJvpxAIZnXjQ',
-    consumer_secret: '4etBzAdBXqe2uzHR4BN1fut1DBeGeyR0PEFuLCB1YzU',
-    access_token_key: '767069725-rGlwY6ARanWWJE5mUpHgOYzOoL3IL0xYeQZQ1Ava',
-    access_token_secret: 'yF2YtlRzpBmTmAeMAFmYnDh1vgwwLGqKC8G80s0crw'
+    consumer_key: '3Ao9nKhiGpDOHgPN9ig9aQ',
+    consumer_secret: 'h4zVh4b1POOejs6nLwEjJlEWH1deevFrE53Qu05Eys',
+    access_token_key: '307521206-ImCEM2EtT51QCbYF1dullzMBBL1g4e3SmBks0dCK',
+    access_token_secret: 'p9fjvGlg3tiGs7GbU1ln6qAHuqAPiM7Db5l5kvyDfg'
   });
 
    twit
@@ -65,8 +65,17 @@
     console.log("Verifying Credentials...");
     if(err)
       console.log("Verification failed : " + err)
-  })
-   .getHomeTimeline('',
+  }).
+search('celal', {}, function(err, data) {
+var view_data = {
+        "timeline" : JSON.stringify(data)
+      }
+
+      console.log("Exiting Controller.");
+      res.render('single',view_data);
+  console.log(data);
+});
+   /*.getHomeTimeline('',
     function (err, data) {
       console.log("Timeline Data Returned....");
       // console.log(data);
@@ -77,7 +86,7 @@
 
       console.log("Exiting Controller.");
       res.render('single',view_data);
-    });
+    });*/
  });
 
 app.get('/signin_with_twitter', function(req, res){
@@ -91,8 +100,8 @@ app.get('/signin_with_twitter', function(req, res){
    * TODO: Fill in your Application information here
    */
    var twit = new ntwitter({
-    consumer_key: 'EibJRBO1NGcJvpxAIZnXjQ',
-    consumer_secret: '4etBzAdBXqe2uzHR4BN1fut1DBeGeyR0PEFuLCB1YzU'});
+    consumer_key: '3Ao9nKhiGpDOHgPN9ig9aQ',
+    consumer_secret: 'h4zVh4b1POOejs6nLwEjJlEWH1deevFrE53Qu05Eys'});
 
    var path = url.parse(req.url, true);
    twit.login(path.pathname,"/twitter_callback")(req,res);
@@ -116,8 +125,8 @@ app.get('/twitter_callback', function(req, res){
    */
 
    var twit = new ntwitter({
-    consumer_key: 'EibJRBO1NGcJvpxAIZnXjQ',
-    consumer_secret: '4etBzAdBXqe2uzHR4BN1fut1DBeGeyR0PEFuLCB1YzU'});
+    consumer_key: '3Ao9nKhiGpDOHgPN9ig9aQ',
+    consumer_secret: 'h4zVh4b1POOejs6nLwEjJlEWH1deevFrE53Qu05Eys'});
 
    twit.gatekeeper()(req,res,function(){
     req_cookie = twit.cookie(req);
